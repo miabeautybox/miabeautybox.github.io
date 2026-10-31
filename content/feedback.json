@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "name": "Chị Ngọc Anh",
+      "service": "Makeup cô dâu",
+      "rating": 5,
+      "content": "Mây makeup cho chị ngày cưới đẹp mà nhẹ mặt lắm, từ sáng tới tối không trôi chút nào. Cả nhà ai cũng khen!",
+      "image": ""
+    },
+    {
+      "name": "Thu Hà",
+      "service": "Khoá makeup cá nhân",
+      "rating": 5,
+      "content": "Học xong tự tin tự makeup đi làm mỗi ngày. Cô dạy kỹ, chỉ từng lỗi nhỏ, còn hỗ trợ sau khoá nữa.",
+      "image": ""
+    },
+    {
+      "name": "Minh Thư",
+      "service": "Nailbox NB02",
+      "rating": 5,
+      "content": "Nailbox đẹp y hình, size vừa khít, dán đi tiệc được cả tuần. Sẽ ủng hộ tiếp ạ.",
+      "image": ""
+    }
+  ]
+}

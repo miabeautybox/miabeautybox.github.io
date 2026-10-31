@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "title": "Makeup cá nhân",
+      "level": "Cơ bản",
+      "duration": "5 buổi • 2 tiếng/buổi",
+      "price": "2500000",
+      "oldPrice": "3000000",
+      "image": "",
+      "description": "Dành cho bạn muốn tự trang điểm đi làm, đi chơi, dự tiệc.",
+      "highlights": [
+        "Hiểu khuôn mặt & chọn tông nền",
+        "Kẻ mày, mắt, môi phù hợp",
+        "Được tặng bộ cọ cơ bản"
+      ]
+    },
+    {
+      "title": "Makeup chuyên nghiệp",
+      "level": "Theo nghề",
+      "duration": "20 buổi • 1 tháng",
+      "price": "12000000",
+      "oldPrice": "",
+      "image": "",
+      "description": "Lộ trình đầy đủ để đi làm makeup artist, nhận khách cô dâu & sự kiện.",
+      "highlights": [
+        "Makeup cô dâu, tiệc, kỷ yếu, chụp ảnh",
+        "Thực hành trên mẫu thật",
+        "Cấp chứng nhận, hỗ trợ việc làm"
+      ]
+    },
+    {
+      "title": "Nail cơ bản",
+      "level": "Cơ bản",
+      "duration": "10 buổi",
+      "price": "6000000",
+      "oldPrice": "",
+      "image": "",
+      "description": "Học sơn gel, úp móng, vẽ cơ bản — đủ để làm cho bản thân hoặc mở tiệm nhỏ.",
+      "highlights": [
+        "Vệ sinh & chăm sóc móng",
+        "Sơn gel, úp móng",
+        "Vẽ hoạ tiết cơ bản"
+      ]
+    }
+  ]
+}

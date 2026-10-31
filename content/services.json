@@ -1,0 +1,64 @@
+{
+  "groups": [
+    {
+      "category": "Trang điểm",
+      "items": [
+        {
+          "name": "Makeup cô dâu (ngày cưới)",
+          "price": "Từ 1.800.000đ",
+          "note": "Bao gồm làm tóc, kèm phụ kiện"
+        },
+        {
+          "name": "Makeup cô dâu chụp ảnh cưới",
+          "price": "1500000",
+          "note": "Thay 2 layout"
+        },
+        {
+          "name": "Makeup dự tiệc / sự kiện",
+          "price": "400000",
+          "note": "Kèm làm tóc đơn giản"
+        },
+        {
+          "name": "Makeup kỷ yếu / chụp ảnh",
+          "price": "350000",
+          "note": ""
+        },
+        {
+          "name": "Makeup tận nơi",
+          "price": "+100.000đ",
+          "note": "Tuỳ khoảng cách"
+        }
+      ]
+    },
+    {
+      "category": "Làm nail",
+      "items": [
+        {
+          "name": "Sơn gel trơn",
+          "price": "120000",
+          "note": ""
+        },
+        {
+          "name": "Úp móng + sơn gel",
+          "price": "200000",
+          "note": ""
+        },
+        {
+          "name": "Đắp gel / bột",
+          "price": "280000",
+          "note": ""
+        },
+        {
+          "name": "Vẽ, đính đá, charm",
+          "price": "10.000 – 50.000đ/ngón",
+          "note": ""
+        },
+        {
+          "name": "Tháo gel / phá móng",
+          "price": "50000",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

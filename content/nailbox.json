@@ -1,0 +1,77 @@
+{
+  "note": "Mỗi bộ 24 móng nhiều size + keo dán + dũa mini. Nhắn size móng (hoặc ảnh tay đặt cạnh thước) để được làm vừa tay. Ship toàn quốc.",
+  "items": [
+    {
+      "code": "NB01",
+      "name": "Nude thạch đính đá",
+      "category": "Cô dâu",
+      "price": "250000",
+      "oldPrice": "290000",
+      "tag": "Bán chạy",
+      "image": ""
+    },
+    {
+      "code": "NB02",
+      "name": "Mắt mèo hồng ánh kim",
+      "category": "Mắt mèo",
+      "price": "220000",
+      "oldPrice": "",
+      "tag": "Mới",
+      "image": ""
+    },
+    {
+      "code": "NB03",
+      "name": "French đầu móng trắng",
+      "category": "Đơn giản",
+      "price": "180000",
+      "oldPrice": "",
+      "tag": "",
+      "image": ""
+    },
+    {
+      "code": "NB04",
+      "name": "Tráng gương bạc",
+      "category": "Dự tiệc",
+      "price": "260000",
+      "oldPrice": "",
+      "tag": "",
+      "image": ""
+    },
+    {
+      "code": "NB05",
+      "name": "Hoa nhí vẽ tay",
+      "category": "Đơn giản",
+      "price": "200000",
+      "oldPrice": "",
+      "tag": "Mới",
+      "image": ""
+    },
+    {
+      "code": "NB06",
+      "name": "Ngọc trai cô dâu",
+      "category": "Cô dâu",
+      "price": "320000",
+      "oldPrice": "350000",
+      "tag": "Sale",
+      "image": ""
+    },
+    {
+      "code": "NB07",
+      "name": "Mắt mèo đen huyền bí",
+      "category": "Mắt mèo",
+      "price": "230000",
+      "oldPrice": "",
+      "tag": "",
+      "image": ""
+    },
+    {
+      "code": "NB08",
+      "name": "Nhũ vàng sang trọng",
+      "category": "Dự tiệc",
+      "price": "240000",
+      "oldPrice": "",
+      "tag": "",
+      "image": ""
+    }
+  ]
+}

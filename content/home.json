@@ -1,0 +1,30 @@
+{
+  "hero": {
+    "title": "Đánh thức vẻ đẹp\nrạng rỡ nhất của bạn",
+    "subtitle": "Trang điểm cô dâu, dự tiệc, kỷ yếu • Làm nail • Nailbox thiết kế riêng • Đào tạo học viên makeup từ cơ bản đến chuyên nghiệp.",
+    "image": "",
+    "stats": [
+      {
+        "number": "500+",
+        "label": "Khách hàng"
+      },
+      {
+        "number": "120+",
+        "label": "Học viên"
+      },
+      {
+        "number": "5 năm",
+        "label": "Kinh nghiệm"
+      }
+    ]
+  },
+  "about": {
+    "text": "Mình là Mây — makeup artist & nail artist. Mình tin mỗi người đều có một nét đẹp riêng, và việc của mình là giúp nét đẹp đó toả sáng một cách tự nhiên nhất. Ngoài nhận khách, mình còn mở lớp dạy makeup cho những bạn muốn tự làm đẹp hoặc theo nghề.",
+    "image": "",
+    "highlights": [
+      "Mỹ phẩm chính hãng, dụng cụ vệ sinh sạch sẽ",
+      "Nhận makeup tận nơi",
+      "Học viên được hỗ trợ sau khoá học"
+    ]
+  }
+}
