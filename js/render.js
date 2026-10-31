@@ -105,7 +105,7 @@
           <div>
             <p class="eyebrow" data-path="about.eyebrow">${esc(about.eyebrow)}</p>
             <h2 data-path="about.title">${esc(about.title)}</h2>
-            <p data-path="about.text">${esc(about.text)}</p>
+            <p class="about__text" data-path="about.text">${esc(about.text)}</p>
             <ul class="checklist" data-path="about.highlights">${list(about.highlights).map((h, i) => `<li data-path="about.highlights.${i}">${esc(h)}</li>`).join("")}</ul>
           </div>
         </div>`,
@@ -149,14 +149,16 @@
       feedback: () => `
         <div class="container">
           ${head("feedback")}
-          <div class="grid grid--3">${list(d.feedback.items).map((f, i) => `
+          <div class="grid grid--3 reviews">${list(d.feedback.items).map((f, i) => `
             <article class="card review" data-path="items.${i}">
-              <div class="stars">${"★".repeat(Math.min(5, Math.max(1, Number(f.rating) || 5)))}</div>
-              ${f.image ? `<div class="review__shot">${img(f.image, "Feedback của " + f.name)}</div>` : ""}
-              ${f.content ? `<p class="review__text">“${esc(f.content)}”</p>` : ""}
-              <div class="review__author">
-                <span class="avatar">${esc((String(f.name || "?").trim().split(/\s+/).pop() || "?")[0])}</span>
-                <div><strong>${esc(f.name)}</strong><small>${esc(f.service)}</small></div>
+              ${f.photo || opts.preview ? `<div class="review__photo" data-path="items.${i}.photo">${img(f.photo, "Ảnh khách hàng")}</div>` : ""}
+              <div class="review__body">
+                ${f.content ? `<p class="review__text">“${esc(f.content)}”</p>` : ""}
+                ${f.image ? `<div class="review__shot">${img(f.image, "Tin nhắn của " + f.name)}</div>` : ""}
+                <div class="review__author">
+                  ${f.photo ? "" : `<span class="avatar">${esc((String(f.name || "?").trim().split(/\s+/).pop() || "?")[0])}</span>`}
+                  <div><strong>${esc(f.name)}</strong><small>${esc(f.service)}</small></div>
+                </div>
               </div>
             </article>`).join("")}
           </div>

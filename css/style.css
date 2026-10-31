@@ -29,6 +29,8 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.2; margin: 0 0 .5em; }
 .price, .price-row__price, .stats strong { font-variant-numeric: lining-nums; }
+/* Giữ chỗ xuống dòng khi nhập trong admin */
+.lead, .about__text, .card__desc, .section__note, .review__text { white-space: pre-line; }
 h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
 h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
 h3 { font-size: 1.25rem; }
@@ -190,8 +192,10 @@ p { margin: 0 0 1em; }
 .gallery__item:hover .gallery__cap { opacity: 1; }
 
 /* Feedback */
-.review { padding: 28px; }
-.stars { color: var(--gold); letter-spacing: 2px; margin-bottom: 10px; }
+.reviews { align-items: start; } /* thẻ không có ảnh không bị kéo cao theo thẻ có ảnh */
+.review__photo { aspect-ratio: 4 / 5; background: var(--blush); }
+.review__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.review__body { padding: 26px 26px 24px; display: flex; flex-direction: column; flex: 1; }
 .review__text { font-family: var(--serif); font-style: italic; font-size: 1.05rem; }
 .review__shot { border-radius: 12px; overflow: hidden; margin-bottom: 16px; border: 1px solid var(--line); }
 .review__author { display: flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 12px; }

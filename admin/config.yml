@@ -178,14 +178,14 @@ collections:
             label_singular: feedback
             widget: list
             collapsed: auto
-            thumbnail: image
+            thumbnail: photo
             summary: "{{fields.name}} — {{fields.service}}"
             fields:
               - { name: name, label: Tên khách, widget: string }
-              - { name: service, label: Dịch vụ đã dùng, widget: string, required: false }
-              - { name: rating, label: Số sao, widget: number, value_type: int, min: 1, max: 5, default: 5 }
-              - { name: content, label: Lời nhận xét, widget: text, required: false }
-              - { name: image, label: Ảnh chụp tin nhắn của khách (nếu có), widget: image, required: false }
+              - { name: service, label: Dịch vụ đã dùng, hint: "Vd: Makeup cô dâu, Nailbox NB02", widget: string, required: false }
+              - { name: photo, label: Ảnh khách hàng (selfie), hint: Hiện lớn ở đầu thẻ feedback — nên dùng ảnh dọc, widget: image, required: false }
+              - { name: content, label: Lời khen của khách, widget: text, required: false }
+              - { name: image, label: Ảnh chụp tin nhắn của khách (nếu có), hint: Hiện nhỏ dưới lời khen, widget: image, required: false }
 
       # ---------------------------------------------------------------- Liên hệ
       - name: contact
