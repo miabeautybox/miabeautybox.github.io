@@ -34,7 +34,7 @@
     </form>
   </div>
 
-  <script src="../js/render.js?v=2"></script>
+  <script src="../js/render.js?v=3"></script>
   <script>
     // Sveltia CMS tự đăng nhập lại khi localStorage có { backendName, token } ở khoá này
     const USER_KEY = "sveltia-cms.user";
@@ -51,7 +51,7 @@
       s.src = CMS_SRC;
       s.onload = () => {
         const p = document.createElement("script");
-        p.src = "preview.js?v=2";
+        p.src = "preview.js?v=3";
         document.body.append(p);
       };
       document.body.append(s);

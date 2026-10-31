@@ -6,7 +6,7 @@
   const SITE = new URL("../", location.href); // gốc của trang web
 
   CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap&subset=vietnamese");
-  CMS.registerPreviewStyle(new URL("css/style.css?v=2", SITE).href);
+  CMS.registerPreviewStyle(new URL("css/style.css?v=3", SITE).href);
   CMS.registerPreviewStyle(`
     html { scroll-behavior: auto; }
     body { margin: 0; }
