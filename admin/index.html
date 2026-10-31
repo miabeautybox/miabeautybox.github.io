@@ -65,14 +65,6 @@
       }
     };
 
-    let cached = null;
-    try { cached = JSON.parse(localStorage.getItem(USER_KEY) || "null"); } catch {}
-    if (cached && cached.token) {
-      loadCms(); // đã đăng nhập từ trước
-    } else {
-      gate.hidden = false;
-    }
-
     document.getElementById("altLogin").addEventListener("click", (e) => { e.preventDefault(); loadCms(); });
     document.getElementById("loginForm").addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -92,6 +84,14 @@
         btn.textContent = "Đăng nhập";
       }
     });
+
+    let cached = null;
+    try { cached = JSON.parse(localStorage.getItem(USER_KEY) || "null"); } catch {}
+    if (cached && cached.token) {
+      loadCms(); // đã đăng nhập từ trước
+    } else {
+      gate.hidden = false;
+    }
   </script>
 </body>
 </html>
