@@ -5,8 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Quản trị website</title>
+  <style>
+    #gate { min-height: 100vh; display: grid; place-items: center; padding: 16px; margin: 0;
+      background: #fbf6f2; font: 16px/1.5 system-ui, -apple-system, sans-serif; color: #3a2a27; }
+    #gate form { width: min(360px, 100%); background: #fff; padding: 32px 28px; border-radius: 18px;
+      box-shadow: 0 10px 30px -12px rgba(90, 50, 40, .25); display: grid; gap: 14px; }
+    #gate h1 { margin: 0 0 6px; font-size: 1.4rem; text-align: center; }
+    #gate label { display: grid; gap: 6px; font-size: .9rem; }
+    #gate input { font: inherit; padding: 11px 14px; border: 1px solid #e3d2ca; border-radius: 10px; }
+    #gate input:focus { outline: 2px solid #c4837a; border-color: transparent; }
+    #gate button { font: inherit; font-weight: 600; padding: 12px; border: 0; border-radius: 999px;
+      background: #c4837a; color: #fff; cursor: pointer; }
+    #gate button:disabled { opacity: .6; cursor: wait; }
+    #gate .err { color: #b3261e; font-size: .9rem; min-height: 1.4em; margin: 0; text-align: center; }
+    #gate .alt { text-align: center; font-size: .8rem; color: #86706b; }
+    #gate .alt a { color: inherit; }
+  </style>
 </head>
 <body>
-  <script src="https://unpkg.com/@sveltia/cms@0.245.1/dist/sveltia-cms.js"></script>
+  <div id="gate" hidden>
+    <form id="loginForm">
+      <h1>Đăng nhập quản trị</h1>
+      <label>Tên đăng nhập <input name="username" autocomplete="username" required autocapitalize="off"></label>
+      <label>Mật khẩu <input name="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Đăng nhập</button>
+      <p class="err" id="err" role="alert"></p>
+      <p class="alt"><a href="#" id="altLogin">Đăng nhập bằng cách khác</a></p>
+    </form>
+  </div>
+
+  <script>
+    // Sveltia CMS tự đăng nhập lại khi localStorage có { backendName, token } ở khoá này
+    const USER_KEY = "sveltia-cms.user";
+    const CMS_SRC = "https://unpkg.com/@sveltia/cms@0.245.1/dist/sveltia-cms.js";
+    const gate = document.getElementById("gate");
+
+    const loadCms = () => {
+      gate.remove();
+      const s = document.createElement("script");
+      s.src = CMS_SRC;
+      document.body.append(s);
+    };
+
+    const fromB64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+    const decryptToken = async (username, password) => {
+      const res = await fetch("auth.json", { cache: "no-cache" });
+      if (!res.ok) throw new Error("Chưa cấu hình tài khoản admin (thiếu admin/auth.json).");
+      const { iterations, salt, iv, data } = await res.json();
+      const material = await crypto.subtle.importKey(
+        "raw", new TextEncoder().encode(`${username}\n${password}`), "PBKDF2", false, ["deriveKey"]);
+      const key = await crypto.subtle.deriveKey(
+        { name: "PBKDF2", hash: "SHA-256", salt: fromB64(salt), iterations },
+        material, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+      try {
+        const plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv: fromB64(iv) }, key, fromB64(data));
+        return new TextDecoder().decode(plain);
+      } catch {
+        throw new Error("Sai tên đăng nhập hoặc mật khẩu.");
+      }
+    };
+
+    let cached = null;
+    try { cached = JSON.parse(localStorage.getItem(USER_KEY) || "null"); } catch {}
+    if (cached && cached.token) {
+      loadCms(); // đã đăng nhập từ trước
+    } else {
+      gate.hidden = false;
+    }
+
+    document.getElementById("altLogin").addEventListener("click", (e) => { e.preventDefault(); loadCms(); });
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector("button");
+      const err = document.getElementById("err");
+      btn.disabled = true;
+      btn.textContent = "Đang đăng nhập...";
+      err.textContent = "";
+      try {
+        const token = await decryptToken(form.username.value.trim(), form.password.value);
+        localStorage.setItem(USER_KEY, JSON.stringify({ backendName: "github", token }));
+        loadCms();
+      } catch (ex) {
+        err.textContent = ex.message;
+        btn.disabled = false;
+        btn.textContent = "Đăng nhập";
+      }
+    });
+  </script>
 </body>
 </html>
