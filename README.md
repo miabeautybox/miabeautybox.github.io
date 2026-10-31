@@ -5,21 +5,25 @@ Web tĩnh (HTML/CSS/JS) chạy trên GitHub Pages, có trang quản trị **/adm
 ```
 index.html          Khung trang
 css/style.css       Giao diện
-js/main.js          Code hiển thị
-content/*.json      ★ Nội dung (sửa qua /admin)
+js/render.js        Vẽ trang từ nội dung (dùng chung cho web và bản xem trước trong admin)
+js/main.js          Tải nội dung rồi vẽ trang
+content/*.json      ★ Nội dung (sửa qua /admin) — mỗi file ứng với một phần trên trang
 images/uploads/     Ảnh upload từ /admin
-admin/              Trang quản trị (config.yml = cấu hình các ô nhập)
+admin/              Trang quản trị: config.yml (các ô nhập), preview.js (bản xem trước), auth.json (tài khoản)
 ```
 
 ## Trang quản trị /admin
 
 Vào `https://miabeautybox.github.io/admin/` → nhập **tên đăng nhập + mật khẩu admin** (trình duyệt sẽ nhớ, lần sau vào thẳng).
 
-Sửa được:
-- **Cài đặt chung & bố cục:** tên thương hiệu, logo, số điện thoại/Zalo, mạng xã hội, bản đồ, **màu chủ đạo, màu nền**, **kéo thả thứ tự các mục, ẩn/hiện từng mục**, đổi tiêu đề từng mục.
-- **Ảnh bìa & Giới thiệu, Bảng giá, Khoá học, Nailbox, Album ảnh, Feedback:** thêm / sửa / xoá / kéo thả sắp xếp, upload ảnh.
+Mỗi mục trong trang quản trị ứng với một phần trên web: **Đầu trang & Giới thiệu, Bảng giá dịch vụ, Khoá học, Nailbox, Album ảnh, Feedback khách hàng, Liên hệ, Màu sắc & bố cục** (thứ tự + ẩn/hiện các phần, màu chủ đạo, màu nền).
 
-Bấm **Save** → khoảng 1 phút sau web tự cập nhật. Ảnh upload được tự thu nhỏ và nén (WebP).
+Khi sửa:
+- Bên trái là các ô nhập, **bên phải là bản xem trước của cả trang web** — phần đang sửa có viền nét đứt, gõ tới đâu thay đổi tới đó (kể cả ảnh vừa upload).
+- **Bấm vào ô nào, bản xem trước tự cuộn tới và viền đậm đúng chỗ đó** trên trang (vd bấm vào giá của mẫu NB05 → thẻ NB05 sáng lên).
+- Danh sách (nailbox, khoá học, album…) được thu gọn thành từng dòng có ảnh nhỏ; bấm vào dòng để mở ra sửa, kéo biểu tượng ═ để đổi thứ tự.
+
+Bấm **Lưu** → khoảng 1 phút sau web thật cập nhật. Ảnh upload được tự thu nhỏ và nén (WebP).
 
 ### Tài khoản admin hoạt động thế nào
 

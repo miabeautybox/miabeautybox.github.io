@@ -1,4 +1,5 @@
 # Cấu hình trang quản trị (Sveltia CMS) — https://sveltiacms.app/en/docs
+# Mỗi mục bên dưới ứng với một phần trên trang web; bản xem trước nằm ở admin/preview.js
 backend:
   name: github
   repo: miabeautybox/miabeautybox.github.io
@@ -24,140 +25,101 @@ media_libraries:
 
 collections:
   - name: pages
-    label: Nội dung trang
-    editor: { preview: false }
+    label: Sửa trang web
+    description: >-
+      Chọn phần muốn sửa. Bên phải là bản xem trước của cả trang web — phần đang sửa có viền nét đứt,
+      gõ tới đâu thay đổi tới đó. Sửa xong bấm Lưu (Save), khoảng 1 phút sau web thật cập nhật.
     files:
-      # ---------------------------------------------------------------- Cài đặt chung
-      - name: settings
-        label: Cài đặt chung & bố cục
-        file: content/settings.json
+      # ---------------------------------------------------------------- Đầu trang
+      - name: home
+        label: Đầu trang & Giới thiệu
+        file: content/home.json
         fields:
           - name: brand
-            label: Thương hiệu
+            label: Tên thương hiệu
+            hint: Hiện ở góc trái trên cùng và cuối trang
             widget: object
             fields:
               - { name: name, label: Tên thương hiệu, widget: string }
-              - { name: tagline, label: Khẩu hiệu ngắn, widget: string }
-              - { name: logo, label: Logo (bỏ trống sẽ hiện tên bằng chữ), widget: image, required: false }
-          - name: contact
-            label: Liên hệ
-            widget: object
-            fields:
-              - { name: phone, label: Số điện thoại, widget: string }
-              - { name: zalo, label: Số Zalo, widget: string }
-              - { name: facebook, label: Link Facebook, widget: string, required: false }
-              - { name: messenger, label: Link Messenger (vd https://m.me/tenpage), widget: string, required: false }
-              - { name: instagram, label: Link Instagram, widget: string, required: false }
-              - { name: tiktok, label: Link TikTok, widget: string, required: false }
-              - { name: address, label: Địa chỉ, widget: string }
-              - { name: hours, label: Giờ mở cửa, widget: string }
-              - name: mapEmbed
-                label: Link nhúng Google Maps
-                hint: "Google Maps → Chia sẻ → Nhúng bản đồ → copy phần link trong src=\"...\""
-                widget: string
-                required: false
-          - name: theme
-            label: Màu sắc
-            widget: object
-            fields:
-              - { name: primary, label: "Màu chủ đạo (nút, tiêu đề nhỏ, giá)", widget: color }
-              - { name: background, label: Màu nền, widget: color }
-          - name: sections
-            label: Bố cục — các mục trên trang
-            hint: Kéo thả để đổi thứ tự. Bỏ chọn "Hiển thị" để ẩn một mục.
-            widget: list
-            allow_add: false
-            allow_remove: false
-            summary: "{{fields.title}} ({{fields.id}}) — hiển thị: {{fields.visible}}"
-            fields:
-              - name: id
-                label: Mục
-                widget: select
-                options:
-                  - { label: Giới thiệu, value: about }
-                  - { label: Bảng giá, value: services }
-                  - { label: Khoá học, value: courses }
-                  - { label: Nailbox, value: nailbox }
-                  - { label: Album ảnh, value: gallery }
-                  - { label: Feedback, value: feedback }
-                  - { label: Liên hệ, value: contact }
-              - { name: visible, label: Hiển thị, widget: boolean, default: true }
-              - { name: eyebrow, label: Dòng chữ nhỏ phía trên, widget: string, required: false }
-              - { name: title, label: Tiêu đề, widget: string }
-
-      # ---------------------------------------------------------------- Trang chủ
-      - name: home
-        label: Ảnh bìa & Giới thiệu
-        file: content/home.json
-        fields:
+              - { name: tagline, label: Dòng chữ nhỏ phía trên tiêu đề lớn, hint: "Vd: Makeup & Nail Studio", widget: string }
+              - { name: logo, label: Logo, hint: Bỏ trống thì hiện tên thương hiệu bằng chữ, widget: image, required: false }
           - name: hero
-            label: Phần đầu trang
+            label: Phần đầu trang (ảnh bìa)
             widget: object
             fields:
-              - { name: title, label: Tiêu đề lớn (Enter để xuống dòng), widget: text }
-              - { name: subtitle, label: Mô tả ngắn, widget: text }
-              - { name: image, label: Ảnh nổi bật, widget: image, required: false }
+              - { name: title, label: Tiêu đề lớn, hint: Nhấn Enter để xuống dòng, widget: text }
+              - { name: subtitle, label: Đoạn mô tả dưới tiêu đề, widget: text }
+              - { name: image, label: Ảnh lớn bên phải, hint: Nên dùng ảnh dọc, widget: image, required: false }
               - name: stats
-                label: Con số nổi bật
+                label: Các con số nổi bật
                 label_singular: con số
                 widget: list
                 summary: "{{fields.number}} {{fields.label}}"
                 fields:
-                  - { name: number, label: Con số, widget: string }
-                  - { name: label, label: Chú thích, widget: string }
+                  - { name: number, label: Con số, hint: "Vd: 500+", widget: string }
+                  - { name: label, label: Chú thích, hint: "Vd: Khách hàng", widget: string }
           - name: about
-            label: Giới thiệu
+            label: Phần giới thiệu
             widget: object
             fields:
-              - { name: text, label: Nội dung, widget: text }
+              - { name: eyebrow, label: Dòng chữ nhỏ, widget: string, required: false }
+              - { name: title, label: Tiêu đề (cũng là tên trên menu), widget: string }
+              - { name: text, label: Nội dung giới thiệu, widget: text }
               - { name: image, label: Ảnh, widget: image, required: false }
               - name: highlights
-                label: Điểm nổi bật
+                label: Các ý có dấu tích
                 widget: list
-                field: { name: item, label: Điểm nổi bật, widget: string }
+                field: { name: item, label: Nội dung, widget: string }
 
       # ---------------------------------------------------------------- Bảng giá
       - name: services
         label: Bảng giá dịch vụ
         file: content/services.json
         fields:
+          - { name: eyebrow, label: Dòng chữ nhỏ, widget: string, required: false }
+          - { name: title, label: Tiêu đề (cũng là tên trên menu), widget: string }
           - name: groups
-            label: Nhóm dịch vụ
-            label_singular: nhóm
+            label: Các nhóm dịch vụ (mỗi nhóm là một nút chuyển trên bảng giá)
+            label_singular: nhóm dịch vụ
             widget: list
             summary: "{{fields.category}}"
             fields:
-              - { name: category, label: Tên nhóm (vd Trang điểm), widget: string }
+              - { name: category, label: Tên nhóm, hint: "Vd: Trang điểm, Làm nail", widget: string }
               - name: items
-                label: Dịch vụ
+                label: Dịch vụ trong nhóm
                 label_singular: dịch vụ
                 widget: list
+                collapsed: auto
                 summary: "{{fields.name}} — {{fields.price}}"
                 fields:
                   - { name: name, label: Tên dịch vụ, widget: string }
-                  - { name: price, label: Giá, hint: "Ghi số (350000) hoặc chữ (Từ 1.500.000đ, Liên hệ)", widget: string }
-                  - { name: note, label: Ghi chú, widget: string, required: false }
+                  - { name: price, label: Giá, hint: "Ghi số (350000 → hiện 350.000đ) hoặc chữ (Từ 1.500.000đ, Liên hệ)", widget: string }
+                  - { name: note, label: Ghi chú nhỏ dưới tên, widget: string, required: false }
 
       # ---------------------------------------------------------------- Khoá học
       - name: courses
         label: Khoá học
         file: content/courses.json
         fields:
+          - { name: eyebrow, label: Dòng chữ nhỏ, widget: string, required: false }
+          - { name: title, label: Tiêu đề (cũng là tên trên menu), widget: string }
           - name: items
-            label: Khoá học
+            label: Các khoá học
             label_singular: khoá học
             widget: list
+            collapsed: auto
+            thumbnail: image
             summary: "{{fields.title}} — {{fields.price}}"
             fields:
               - { name: title, label: Tên khoá, widget: string }
-              - { name: level, label: "Nhãn (vd Cơ bản, Theo nghề)", widget: string, required: false }
-              - { name: duration, label: Thời lượng, widget: string }
-              - { name: price, label: Giá, hint: Ghi số (2500000) hoặc chữ, widget: string }
-              - { name: oldPrice, label: "Giá gốc (gạch ngang, bỏ trống nếu không giảm)", widget: string, required: false }
+              - { name: level, label: Nhãn góc trên ảnh, hint: "Vd: Cơ bản, Theo nghề", widget: string, required: false }
+              - { name: duration, label: Thời lượng, hint: "Vd: 5 buổi • 2 tiếng/buổi", widget: string }
+              - { name: price, label: Giá, hint: "Ghi số (2500000) hoặc chữ", widget: string }
+              - { name: oldPrice, label: Giá gốc (bị gạch ngang), hint: Bỏ trống nếu không giảm giá, widget: string, required: false }
               - { name: image, label: Ảnh, widget: image, required: false }
-              - { name: description, label: Mô tả, widget: text }
+              - { name: description, label: Mô tả ngắn, widget: text }
               - name: highlights
-                label: Nội dung học
+                label: Nội dung học (các ý có dấu tích)
                 widget: list
                 field: { name: item, label: Nội dung, widget: string }
 
@@ -166,49 +128,128 @@ collections:
         label: Nailbox
         file: content/nailbox.json
         fields:
-          - { name: note, label: "Ghi chú chung (size, ship...)", widget: text }
+          - { name: eyebrow, label: Dòng chữ nhỏ, widget: string, required: false }
+          - { name: title, label: Tiêu đề (cũng là tên trên menu), widget: string }
+          - { name: note, label: Ghi chú dưới tiêu đề, hint: "Size, ship, quà tặng kèm...", widget: text, required: false }
           - name: items
-            label: Sản phẩm
-            label_singular: nailbox
+            label: Các mẫu nailbox
+            label_singular: mẫu nailbox
             widget: list
+            collapsed: auto
+            thumbnail: image
             summary: "{{fields.code}} — {{fields.name}} — {{fields.price}}"
             fields:
-              - { name: code, label: Mã, widget: string }
+              - { name: code, label: Mã, hint: "Vd: NB09", widget: string }
               - { name: name, label: Tên mẫu, widget: string }
-              - { name: category, label: "Loại (dùng để lọc, vd Cô dâu, Mắt mèo)", widget: string }
+              - { name: category, label: Loại, hint: "Dùng làm nút lọc phía trên, vd: Cô dâu, Mắt mèo", widget: string }
               - { name: price, label: Giá, widget: string }
-              - { name: oldPrice, label: Giá gốc (gạch ngang), widget: string, required: false }
-              - { name: tag, label: "Nhãn (Mới, Bán chạy, Sale...)", widget: string, required: false }
-              - { name: image, label: Ảnh, widget: image, required: false }
+              - { name: oldPrice, label: Giá gốc (bị gạch ngang), hint: Bỏ trống nếu không giảm giá, widget: string, required: false }
+              - { name: tag, label: Nhãn góc trên ảnh, hint: "Vd: Mới, Bán chạy, Sale", widget: string, required: false }
+              - { name: image, label: Ảnh, hint: Nên dùng ảnh vuông, widget: image, required: false }
 
       # ---------------------------------------------------------------- Album
       - name: gallery
         label: Album ảnh
         file: content/gallery.json
         fields:
+          - { name: eyebrow, label: Dòng chữ nhỏ, widget: string, required: false }
+          - { name: title, label: Tiêu đề (cũng là tên trên menu), widget: string }
           - name: items
-            label: Ảnh
+            label: Các ảnh
             label_singular: ảnh
             widget: list
+            collapsed: auto
+            thumbnail: image
             summary: "[{{fields.category}}] {{fields.caption}}"
             fields:
               - { name: image, label: Ảnh, widget: image }
-              - { name: category, label: "Nhóm (Makeup, Nail, Học viên...)", widget: string }
-              - { name: caption, label: Chú thích, widget: string, required: false }
+              - { name: category, label: Nhóm, hint: "Dùng làm nút lọc phía trên, vd: Makeup, Nail, Học viên", widget: string }
+              - { name: caption, label: Chú thích (hiện khi rê chuột vào ảnh), widget: string, required: false }
 
       # ---------------------------------------------------------------- Feedback
       - name: feedback
         label: Feedback khách hàng
         file: content/feedback.json
         fields:
+          - { name: eyebrow, label: Dòng chữ nhỏ, widget: string, required: false }
+          - { name: title, label: Tiêu đề (cũng là tên trên menu), widget: string }
           - name: items
-            label: Feedback
+            label: Các feedback
             label_singular: feedback
             widget: list
+            collapsed: auto
+            thumbnail: image
             summary: "{{fields.name}} — {{fields.service}}"
             fields:
               - { name: name, label: Tên khách, widget: string }
               - { name: service, label: Dịch vụ đã dùng, widget: string, required: false }
               - { name: rating, label: Số sao, widget: number, value_type: int, min: 1, max: 5, default: 5 }
               - { name: content, label: Lời nhận xét, widget: text, required: false }
-              - { name: image, label: Ảnh chụp tin nhắn (nếu có), widget: image, required: false }
+              - { name: image, label: Ảnh chụp tin nhắn của khách (nếu có), widget: image, required: false }
+
+      # ---------------------------------------------------------------- Liên hệ
+      - name: contact
+        label: Liên hệ
+        file: content/contact.json
+        fields:
+          - { name: eyebrow, label: Dòng chữ nhỏ, widget: string, required: false }
+          - { name: title, label: Tiêu đề (cũng là tên trên menu), widget: string }
+          - { name: phone, label: Số điện thoại, hint: Dùng cho nút gọi điện ở góc màn hình, widget: string }
+          - { name: zalo, label: Số Zalo, hint: "Dùng cho các nút Đặt lịch, Đặt mua, Đăng ký học", widget: string }
+          - { name: address, label: Địa chỉ, widget: string }
+          - { name: hours, label: Giờ mở cửa, widget: string }
+          - { name: facebook, label: Link Facebook, hint: Bỏ trống thì ẩn nút, widget: string, required: false }
+          - { name: messenger, label: Link Messenger, hint: "Vd: https://m.me/tenpage — bỏ trống thì ẩn nút", widget: string, required: false }
+          - { name: instagram, label: Link Instagram, hint: Bỏ trống thì ẩn nút, widget: string, required: false }
+          - { name: tiktok, label: Link TikTok, hint: Bỏ trống thì ẩn nút, widget: string, required: false }
+          - name: mapEmbed
+            label: Link nhúng Google Maps
+            hint: "Google Maps → Chia sẻ → Nhúng bản đồ → copy phần link trong src=\"...\""
+            widget: string
+            required: false
+
+      # ---------------------------------------------------------------- Bố cục
+      - name: layout
+        label: Màu sắc & bố cục
+        file: content/layout.json
+        fields:
+          - name: theme
+            label: Màu sắc
+            widget: object
+            fields:
+              - { name: primary, label: Màu chủ đạo, hint: "Màu của nút bấm, giá tiền, chữ nhỏ; các màu nhạt tự pha theo màu này", widget: color }
+              - { name: background, label: Màu nền trang, widget: color }
+          - name: order
+            label: Thứ tự các phần trên trang
+            hint: Kéo biểu tượng ═ hoặc bấm mũi tên ↑ ↓ để đổi thứ tự. Phần đầu trang (ảnh bìa) luôn ở trên cùng.
+            widget: list
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            collapsed: true
+            summary: "{{fields.id}}"
+            fields:
+              - name: id
+                label: Phần
+                widget: select
+                readonly: true
+                options:
+                  - { label: Giới thiệu, value: about }
+                  - { label: Bảng giá, value: services }
+                  - { label: Khoá học, value: courses }
+                  - { label: Nailbox, value: nailbox }
+                  - { label: Album ảnh, value: gallery }
+                  - { label: Feedback, value: feedback }
+                  - { label: Liên hệ, value: contact }
+          - name: visible
+            label: Ẩn / hiện các phần
+            hint: Tắt công tắc để ẩn phần đó khỏi web. Trong bản xem trước, phần bị ẩn sẽ mờ đi.
+            widget: object
+            fields:
+              - { name: about, label: Giới thiệu, widget: boolean, default: true }
+              - { name: services, label: Bảng giá, widget: boolean, default: true }
+              - { name: courses, label: Khoá học, widget: boolean, default: true }
+              - { name: nailbox, label: Nailbox, widget: boolean, default: true }
+              - { name: gallery, label: Album ảnh, widget: boolean, default: true }
+              - { name: feedback, label: Feedback, widget: boolean, default: true }
+              - { name: contact, label: Liên hệ, widget: boolean, default: true }

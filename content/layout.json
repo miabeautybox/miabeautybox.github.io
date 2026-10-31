@@ -1,0 +1,38 @@
+{
+  "theme": {
+    "primary": "#c4837a",
+    "background": "#fbf6f2"
+  },
+  "order": [
+    {
+      "id": "about"
+    },
+    {
+      "id": "services"
+    },
+    {
+      "id": "courses"
+    },
+    {
+      "id": "nailbox"
+    },
+    {
+      "id": "gallery"
+    },
+    {
+      "id": "feedback"
+    },
+    {
+      "id": "contact"
+    }
+  ],
+  "visible": {
+    "about": true,
+    "services": true,
+    "courses": true,
+    "nailbox": true,
+    "gallery": true,
+    "feedback": true,
+    "contact": true
+  }
+}

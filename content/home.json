@@ -1,4 +1,9 @@
 {
+  "brand": {
+    "name": "Mây Beauty",
+    "tagline": "Makeup & Nail Studio",
+    "logo": ""
+  },
   "hero": {
     "title": "Đánh thức vẻ đẹp\nrạng rỡ nhất của bạn",
     "subtitle": "Trang điểm cô dâu, dự tiệc, kỷ yếu • Làm nail • Nailbox thiết kế riêng • Đào tạo học viên makeup từ cơ bản đến chuyên nghiệp.",
@@ -19,6 +24,8 @@
     ]
   },
   "about": {
+    "eyebrow": "Xin chào",
+    "title": "Về mình",
     "text": "Mình là Mây — makeup artist & nail artist. Mình tin mỗi người đều có một nét đẹp riêng, và việc của mình là giúp nét đẹp đó toả sáng một cách tự nhiên nhất. Ngoài nhận khách, mình còn mở lớp dạy makeup cho những bạn muốn tự làm đẹp hoặc theo nghề.",
     "image": "",
     "highlights": [
